@@ -5,9 +5,9 @@
 exports.calculoExamen = (período, capital, interes,SaldoFinal) => {
  
   let período = 0;
-  let capital= 0;
-  let interes = interes / 100;
-  let SaldoFinal= 2853.12;
+  let capital= 1000;
+  let interes = interes / 12;
+  let SaldoFinal= 0;
   
  
 
@@ -31,14 +31,13 @@ exports.calculoExamen = (período, capital, interes,SaldoFinal) => {
     
 
     // Almacenar los valores en el arreglo
-    cuotas.push({
-      período,
+    Periodo.push({
+    
       capital,
       interes,
-    
       SaldoFinal,
     });
   }
 
-  return cuotas;
+  return interes;
 };
