@@ -2,47 +2,41 @@
 // couta = (capital * i) / (1 - (i + 1) ^ -n)
 // i = interés
 // n = períodos (en meses)
-exports.calculoExamen = (capital, tasaInteres, plazo) => {
-  let cuota = 0;
-  let mes = 0;
-  let interes = 0;
-  let tasaInteresDecimal = tasaInteres / 100;
-  const cuotas = [];
-  let capitalAmortizar = 0;
+exports.calculoExamen = (período, capital, interes,SaldoFinal) => {
+ 
+  let período = 0;
+  let capital= 0;
+  let interes = interes / 100;
+  let SaldoFinal= 2853.12
+  
+ 
 
   // Transformar los años en meses
-  plazo = Math.round(plazo * 12);
+  período = Math.round(Periodo* 12);
 
-  // Calcular la cuota
-  cuota =
-    (capital * tasaInteresDecimal) / (1 - (1 + tasaInteresDecimal) ** -plazo);
-  cuota = cuota.toFixed(2);
-
-  while (mes != plazo) {
+  
     // Obtener el interés por período
     interes = capital * tasaInteresDecimal;
     interes = interes.toFixed(2);
 
-    // El capital que se amortiza en la cuota
-    capitalAmortizar = cuota - interes;
-    capitalAmortizar = capitalAmortizar.toFixed(2);
+    
 
-    // Actualizar el mes (período)
-    mes++;
+    // Actualizar el  (período)
+    Periodo++;
 
     // Actualizar la deuda
-    capital -= capitalAmortizar;
+    capital -= capital;
     capital = capital.toFixed(2);
 
     
 
     // Almacenar los valores en el arreglo
     cuotas.push({
-      mes,
-      capitalAmortizar,
-      interes,
-      cuota,
+      período,
       capital,
+      interes,
+    
+      SaldoFinal,
     });
   }
 
