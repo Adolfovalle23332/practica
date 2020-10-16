@@ -7,7 +7,7 @@ exports.calculoExamen = (período, capital, interes,SaldoFinal) => {
   let período = 0;
   let capital= 0;
   let interes = interes / 100;
-  let SaldoFinal= 2853.12
+  let SaldoFinal= 2853.12;
   
  
 
@@ -16,7 +16,7 @@ exports.calculoExamen = (período, capital, interes,SaldoFinal) => {
 
   
     // Obtener el interés por período
-    interes = capital * tasaInteresDecimal;
+    interes = capital * interes;
     interes = interes.toFixed(2);
 
     

@@ -4,9 +4,8 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 // Importar body parser que nos permite acceder al cuerpo de la petición HTTP
 const bodyParser = require("body-parser");
-// Importar la función de cálculo de método francés
-const { divisionNumeros } = require("./Funciones");
-
+// Importar la función de cálculo de Examen
+const { calculoExamen } = require("./calculoExamen");
 
 // Crear un servidor express
 const app = express();
@@ -23,21 +22,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Información sobre los verbos HTTP
 // https://developer.mozilla.org/es/docs/Web/HTTP/Methods
 app.get("/", (req, res, next) => {
-  res.render("menu");
+  res.render("formulario_prestamo");
 });
 
-// Ejercicio 1 Division de Numeros
-app.get("/divisionNumeros", (req, res, next) => {
+app.post("/prestamo", (req, res, next) => {
+  // Asignación por destructuring
+  // https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Destructuring_assignment
+  const { periodo, capital, interes, SaldoFinal } = req.body;
 
-  res.render("divisionNumeros");
+  const cuotas = calculoExamen(periodo, capital, interes, SaldoFinal);
+
+  res.render("resultado_prestamo", { cuotas });
 });
-app.post("/divisionNumeros", (req, res, next) => {
-  const { numero } = req.body;
-  const numeros = divisionNumeros(numero);
-  res.render("verDivisionNumeros", { numeros });
-});
-
-
 
 // Inicializar el servidor en un puerto en específico
 app.listen(5000, () => {
